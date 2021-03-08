@@ -4,6 +4,6 @@ const router = express.Router();
 const userController = require('./../controllers/UserController');
 
 router.get('/user/test', userController.testApi);
-router.post('/user/create', userController.index);
+router.post('/user/create', userController.create);
 
 module.exports = router;

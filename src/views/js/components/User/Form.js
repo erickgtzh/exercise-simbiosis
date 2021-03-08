@@ -14,28 +14,39 @@ function Form() {
   const onClickSave = async () => {
     setError(null);
 
-    const datapost = {
-      first_name,
-      last_name,
-      birthday,
-      password,
-      gender_id,
-    };
+    if (
+      first_name &&
+      last_name &&
+      birthday &&
+      password &&
+      gender_id
+    ) {
+      const datapost = {
+        first_name,
+        last_name,
+        birthday,
+        password,
+        gender_id,
+      };
 
-    const res = await userService.save(datapost);
+      const res = await userService.save(datapost);
 
-    if (res.success) {
-      alert(res.message);
+      if (res.success) {
+        alert(res.message);
+      } else {
+        console.log(res.message);
+        setError(res.message);
+      }
     } else {
-      setError(res.message);
+      setError('Please fill out all the form.');
     }
   };
 
   return (
-    <div>
+    <>
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="firstName">Name</label>
+          <label for="first_name">First Name</label>
           <input
             type="text"
             class="form-control"
@@ -47,7 +58,7 @@ function Form() {
 
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="lastName">Last Name</label>
+          <label for="last_name">Last Name</label>
           <input
             type="text"
             class="form-control"
@@ -83,12 +94,15 @@ function Form() {
 
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="password">Gender</label>
+          <label for="gender_id">Gender</label>
           <select
             class="form-control"
             onChange={(event) => setGender(event.target.value)}
             placeholder="Gender"
           >
+            <option disabled selected>
+              Select a gender
+            </option>
             <option value="1">Male</option>
             <option value="2">Female</option>
           </select>
@@ -112,7 +126,7 @@ function Form() {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
