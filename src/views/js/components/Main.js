@@ -16,11 +16,12 @@ function Main() {
   return (
     <Router>
       <main>
-        <Nav></Nav>
+        <Nav />
         <Switch>
           <Route path="/user/index" exact component={List} />
           <Route path="/user/form" component={Form} />
           <Route path="/user/edit/:user_id" component={Edit} />
+          <Route path="/user/delete/:user_id" />
         </Switch>
       </main>
     </Router>

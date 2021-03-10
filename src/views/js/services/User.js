@@ -15,4 +15,17 @@ user.save = async (data) => {
   return res;
 };
 
+user.update = async (data) => {
+  const urlSave = baseUrl + `/update/${data.userId}`;
+  const res = await axios
+    .put(urlSave, data)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+  return res;
+};
+
 export default user;

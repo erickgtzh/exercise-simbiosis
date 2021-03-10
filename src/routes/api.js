@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-//import controller
 const userController = require('./../controllers/UserController');
 
-router.get('/user/test', userController.testApi);
+router.get('/user/list', userController.list);
+router.get('/user/:id', userController.getUser);
+router.put('/user/update/:id', userController.updateUser);
 router.post('/user/create', userController.create);
+router.get('/user/delete/:id', userController.delete);
 
 module.exports = router;

@@ -19,7 +19,7 @@ app.use(express.json());
 // Routes
 app.use(require('./routes/web'));
 
-app.use('/api', require('./routes/api'));
+app.use('/api', require("./routes/api"));
 
 // starting the servers
 app.listen(app.get('port'), () => {

@@ -5,7 +5,6 @@ const userController = require('./../controllers/UserController');
 
 router.get('/user/index', userController.index);
 router.get('/user/form', userController.index);
-router.get('/user/list', userController.index);
-router.get('/user/edit/:user_id', userController.index);
+router.get('/user/show', userController.index);
 
 module.exports = router;
